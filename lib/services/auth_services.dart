@@ -4,6 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService extends ChangeNotifier {
+  //TODO: dirección de la web api
   final String _baseUrl = '192.168.100.6:7150';
   //final String _firebaseToken = 'AIzaSyBcytoCbDUARrX8eHpcR-Bdrdq0yUmSjf8';
 
@@ -17,6 +18,7 @@ class AuthService extends ChangeNotifier {
       //'returnSecureToken': true
     };
 
+    //TODO: endpoint de la web api para registrar usuario
     final url = Uri.https(_baseUrl, '/api/Cuentas/registrar');
 
     final resp = await http.post(url, body: json.encode(authData));
@@ -37,14 +39,9 @@ class AuthService extends ChangeNotifier {
       'email': email,
       'password': password
     };
+
+    //TODO: ENDPOINT PARA EL LOGIN
     final url = Uri.https(_baseUrl, '/api/Cuentas/login');
-
-    final url2 = Uri.https(_baseUrl, '/Prueba/on');
-
-    final resp2 = await http.get(url2, headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-      'Accept': 'application/json'
-    });
 
     /*final resp = await http.post(url,
         headers: {"Content-Type": "application/json"},
